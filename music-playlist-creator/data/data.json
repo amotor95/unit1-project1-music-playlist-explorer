@@ -1,0 +1,26 @@
+[
+    {
+        "playlistID": 1,
+        "playlist_name": "car",
+        "playlist_author": "jackm",
+        "playlist_art": "music-playlist-creator/assets/img/playlist.png"
+    },
+    {
+        "playlistID": 2,
+        "playlist_name": "shower",
+        "playlist_author": "maanasp",
+        "playlist_art": "music-playlist-creator/assets/img/playlist.png"
+    },
+    {
+        "playlistID": 3,
+        "playlist_name": "gym",
+        "playlist_author": "saitejv",
+        "playlist_art": "music-playlist-creator/assets/img/playlist.png"
+    },
+    {
+        "playlistID": 4,
+        "playlist_name": "gaming",
+        "playlist_author": "justinliao",
+        "playlist_art": "music-playlist-creator/assets/img/playlist.png"
+    }
+]
