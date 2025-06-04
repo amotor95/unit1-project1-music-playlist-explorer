@@ -12,11 +12,12 @@ body {
 header {
     background-color: #888;
     border: solid blue 2px;
-    width: 100%;
+    /* width: 100%; */
     height: min(200px, 30vh);
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 15px;
 }
 
 header > h1 {
@@ -28,6 +29,8 @@ header > h1 {
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border: solid blue 2px;
+    margin: 15px;
 }
 
 .playlist-card {
@@ -84,7 +87,7 @@ header > h1 {
 }
 
 #playlist-modal {
-    /* display:none; */
+    display:none;
     position:fixed;
     z-index: 1;
     left: 0;
