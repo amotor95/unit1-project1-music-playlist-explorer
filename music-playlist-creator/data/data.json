@@ -39,7 +39,7 @@
             "song_name": "Last Friday Night",
             "song_artist": "Katy Perry",
             "song_album": "Teenage Dream",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "3:50"
         },
         {
@@ -47,7 +47,7 @@
             "song_name": "Bad Habits",
             "song_artist": "Ed Sheeran",
             "song_album": "Equals",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "3:51"
         },
         {
@@ -55,7 +55,7 @@
             "song_name": "Watermelon Sugar",
             "song_artist": "Harry Styles",
             "song_album": "Fine Line",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "2:54"
         },
         {
@@ -63,7 +63,7 @@
             "song_name": "Dance Monkey",
             "song_artist": "Tones and I",
             "song_album": "The Kids Are Coming",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "3:29"
         },
         {
@@ -71,7 +71,7 @@
             "song_name": "Old Town Road",
             "song_artist": "Lil Nas X ft. Billy Ray Cyrus",
             "song_album": "7 EP",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "2:37"
         },
         {
@@ -79,7 +79,7 @@
             "song_name": "Havana",
             "song_artist": "Camila Cabello ft. Young Thug",
             "song_album": "Camila",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "3:36"
         },
         {
@@ -87,7 +87,7 @@
             "song_name": "Rockstar",
             "song_artist": "Post Malone ft. 21 Savage",
             "song_album": "Beerbongs & Bentleys",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "3:38"
         },
         {
@@ -95,7 +95,7 @@
             "song_name": "Thank U, Next",
             "song_artist": "Ariana Grande",
             "song_album": "Thank U, Next",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "3:27"
         },
         {
@@ -103,7 +103,7 @@
             "song_name": "Sunflower",
             "song_artist": "Post Malone & Swae Lee",
             "song_album": "Spider-Man: Into the Spider-Verse",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "2:38"
         },
         {
@@ -111,7 +111,7 @@
             "song_name": "Senorita",
             "song_artist": "Shawn Mendes & Camila Cabello",
             "song_album": "Shawn Mendes",
-            "song_art": "assets/img/playlist.png",
+            "song_art": "assets/img/song.png",
             "song_duration": "3:11"
         }
     ]
