@@ -15,18 +15,33 @@
 //     })
 // };
 
-//START POPULATING PLAYLISTS
+// START DELETE PLAYLISTS
+
+const delete_playlist = (e) => {
+    const playlist_card = e.target.parentElement
+    playlist_card.remove()
+}
+
+// END DELETE PLAYLISTS
+
+// START POPULATING PLAYLISTS
 
 const populate_playlists = (playlists) => {
     const playlists_box = document.getElementById("playlist-cards-box")
     if (playlists.length > 0) {
         for (const playlist of playlists) {
-            let new_card = document.createElement("div")
+            const new_card = document.createElement("div")
             new_card.setAttribute("class", "playlist-card")
             new_card.playlist = playlist
             // console.log(new_card.playlist)
 
-            let card_img = document.createElement("img")
+            const delete_playlist_button = document.createElement("btn")
+            delete_playlist_button.setAttribute("class", "delete-playlist-btn")
+            delete_playlist_button.innerText = "×"
+            delete_playlist_button.addEventListener("click", (e) => delete_playlist(e))
+            new_card.appendChild(delete_playlist_button)
+
+            const card_img = document.createElement("img")
             card_img.setAttribute("class", "playlist-image")
             card_img.setAttribute("src", playlist.playlist_art)
             card_img.setAttribute("alt", "playlist image")
@@ -36,27 +51,27 @@ const populate_playlists = (playlists) => {
             card_img.addEventListener("click", (e) => open_modal(e))
             new_card.appendChild(card_img)
 
-            let card_title = document.createElement("p")
+            const card_title = document.createElement("p")
             card_title.setAttribute("class", "playlist-title")
             card_title.innerText = playlist.playlist_name
             card_title.playlistID = playlist.playlistID
             card_title.addEventListener("click", (e) => open_modal(e))
             new_card.appendChild(card_title)
-            let card_creator = document.createElement("p")
+            const card_creator = document.createElement("p")
             card_creator.setAttribute("class", "playlist-creator")
             card_creator.innerText = playlist.playlist_author
             card_creator.playlistID = playlist.playlistID
             card_creator.addEventListener("click", (e) => open_modal(e))
             new_card.appendChild(card_creator)
 
-            let card_likes = document.createElement("div")
+            const card_likes = document.createElement("div")
             card_likes.setAttribute("class", "playlist-likes-div")
-            let likes_button = document.createElement("btn")
+            const likes_button = document.createElement("btn")
             likes_button.setAttribute("class", "playlist-like-button")
             likes_button.innerText = "♡"
             likes_button.addEventListener("click", (e) => toggle_like(e))
             card_likes.appendChild(likes_button)
-            let likes_count = document.createElement("p")
+            const likes_count = document.createElement("p")
             likes_count.setAttribute("class", "playlist-num-likes")
             likes_count.innerText = playlist.num_likes
             likes_count.playlistID = playlist.playlistID
@@ -114,8 +129,6 @@ const create_modal = async (playlist) => {
     console.log(playlist)
     console.log(songs)
 
-    const playlist_modal = document.getElementById("playlist-modal")
-
     const modal_content = document.getElementById("playlist-modal-content")
 
     modal_content.remove()
@@ -126,6 +139,7 @@ const create_modal = async (playlist) => {
 
     const close_btn = document.createElement("span")
     close_btn.setAttribute("id", "playlist-modal-close")
+    close_btn.innerText = "×"
     close_btn.addEventListener("click", () => {modal.style.display = "none";})
 
     const playlist_modal_header = document.createElement("div")
@@ -135,7 +149,6 @@ const create_modal = async (playlist) => {
     playlist_image.setAttribute("src", playlist.playlist_art)
     playlist_image.setAttribute("alt", "playlist image")
     playlist_image.setAttribute("class", "playlist-modal-image")
-
     playlist_modal_header.appendChild(playlist_image)
 
     const playlist_model_header_info = document.createElement("div")
@@ -163,7 +176,7 @@ const create_modal = async (playlist) => {
 
     new_modal_content.appendChild(close_btn)
     new_modal_content.appendChild(playlist_modal_header)
-    
+
 
     const included_songs = get_included_songs(playlist, songs)
 
@@ -183,11 +196,43 @@ const create_modal = async (playlist) => {
 
 const add_playlist_btn = document.getElementById("add-playlist-btn")
 
-// add_playlist_btn.onclick( () => create_add_playlist_modal())
+const create_add_playlist_modal = () => {
+    modal.style.display = "block";
 
-// const create_add_playlist_modal = () => {
+    const modal_content = document.getElementById("playlist-modal-content")
 
-// }
+    modal_content.remove()
+
+    // Add new nodes to new_modal_content
+    const new_modal_content = document.createElement("div")
+    new_modal_content.setAttribute("id", "playlist-modal-content")
+    new_modal_content.setAttribute("class", "modal-context")
+
+    const close_btn = document.createElement("span")
+    close_btn.setAttribute("id", "playlist-modal-close")
+    close_btn.innerText = "×"
+    close_btn.addEventListener("click", () => {modal.style.display = "none";})
+
+    new_modal_content.appendChild(close_btn)
+
+    const new_playlist_content = document.createElement("div")
+    new_playlist_content.setAttribute("class", "add-playlist-content")
+
+    const new_playlist_info = document.createElement("div")
+    new_playlist_info.setAttribute("class", "new-playlist-info")
+
+    const new_title = document.createElement("h1")
+    new_title.setAttribute("class", "new-playlist-title")
+    new_title.innerText = "Add A New Playlist"
+
+
+
+    new_playlist_content.appendChild(new_playlist_info)
+    modal.appendChild(new_modal_content)
+
+}
+
+add_playlist_btn.addEventListener("click", create_add_playlist_modal)
 
 // END ADD PLAYLIST MODAL
 
