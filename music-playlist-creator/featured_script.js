@@ -1,7 +1,6 @@
 // FEATURED PLAYLIST
 
 const render_featured = async () => {
-    console.log("Hi")
     const data = await get_json_data()
     const playlists = data.playlists
     const songs = data.songs
