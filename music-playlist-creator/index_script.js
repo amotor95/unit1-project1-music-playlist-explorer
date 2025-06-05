@@ -60,7 +60,7 @@ const populate_playlists = (playlists) => {
             likes_count.setAttribute("class", "playlist-num-likes")
             likes_count.innerText = playlist.num_likes
             likes_count.playlistID = playlist.playlistID
-            likes_count.addEventListener("click", (e) => toggle_like(e))
+            likes_count.addEventListener("click", (e) => open_modal(e))
             card_likes.appendChild(likes_count)
             new_card.appendChild(card_likes)
 
@@ -128,9 +128,14 @@ const create_modal = async (playlist) => {
     document.getElementById("playlist-modal-title").innerText = playlist.playlist_name;
     document.getElementById("playlist-modal-creator").innerText = playlist.playlist_author;
 
+    const modal_content = document.getElementById("playlist-modal-content")
+
     const included_songs = get_included_songs(playlist, songs)
 
-    gen_songs_list(included_songs)
+    document.getElementsByClassName("playlist-songs")[0].remove()
+    const songs_list = gen_songs_list(included_songs)
+    songs_list.setAttribute("class", "playlist-songs")
+    modal_content.appendChild(songs_list)
 
     modal.style.display = "block";
 };
@@ -142,7 +147,7 @@ const create_modal = async (playlist) => {
 const toggle_like = (e) => {
     // Works because the only other sibling is the like count node
     like_count = e.target.nextSibling
-    console.log(like_count)
+    // console.log(like_count)
     if (e.target.innerText === "♡") {
         like_count.innerText = (parseInt(like_count.innerText) + 1)
         e.target.innerText = "❤️"

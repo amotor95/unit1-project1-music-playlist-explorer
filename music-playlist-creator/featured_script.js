@@ -8,16 +8,16 @@ const render_featured = async () => {
     const random_playlist_index = Math.floor(Math.random() * playlists.length)
     const playlist = playlists[random_playlist_index]
 
-    const main = document.getElementsByClassName("main")[0]
+    const main = document.getElementById("featured-main")
 
     const featured_content = document.createElement("section")
-    featured_content.setAttribute("id", "playlist-modal-content")
+    featured_content.setAttribute("class", "featured-content")
 
     const featured_header = document.createElement("div")
     featured_header.setAttribute("class", "featured-header")
 
     const featured_image = document.createElement("img")
-    featured_image.setAttribute("id", "featured-image")
+    featured_image.setAttribute("class", "featured-image")
     featured_image.setAttribute("src", playlist.playlist_art)
     featured_header.appendChild(featured_image)
 
@@ -27,7 +27,7 @@ const render_featured = async () => {
     featured_header.appendChild(featured_title)
 
     const featured_creator = document.createElement("p")
-    featured_creator.setAttribute("class", "playlist-creator")
+    featured_creator.setAttribute("class", "featured-creator")
     featured_creator.innerText = playlist.playlist_author
     featured_header.appendChild(featured_creator)
 
@@ -35,8 +35,9 @@ const render_featured = async () => {
 
     const included_songs = get_included_songs(playlist, songs)
 
-    gen_songs_list(included_songs)
-
+    const songs_list = gen_songs_list(included_songs)
+    songs_list.setAttribute("class", "playlist-songs")
+    featured_content.appendChild(songs_list)
     main.appendChild(featured_content)
 }
 

@@ -19,11 +19,12 @@
         </nav>
     </header>
 
-    <main> 
+    <main id="index-main"> 
         <!-- Your main content here -->
         <section id="playlist-cards-box">
             <!-- Populated by JS from data.json playlists -->
         </section>
+        <btn class="add-playlist-btn">Add Playlist</btn>
         <div id="playlist-modal" class="modal">
             <div id="playlist-modal-content" class="modal-content">
                 <span id="playlist-modal-close">&times;</span>
@@ -35,13 +36,12 @@
                     </div>
                     <btn id="shuffle-btn">🔀</btn>
                 </div>
-                <div id="playlist-modal-songs">
+                <div class="playlist-songs">
                     <!-- Populated by JS from data.json songs -->
                 </div>
             </div>
         </div>
     </main>
-
     <footer>
         <!-- Your footer content here -->
         <p>by Jack McClure 2025</p>

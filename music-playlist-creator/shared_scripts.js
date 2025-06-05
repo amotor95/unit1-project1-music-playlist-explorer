@@ -33,32 +33,38 @@ const shuffle_array = (array) => {
 };
 
 const shuffle_songs = () => {
-    const modal_content = document.getElementById("playlist-modal-content")
-    let songs = modal_content.songs
+    const playlist_songs = document.getElementsByClassName("playlist-songs")[0]
+    const playlist_parent = playlist_songs.parentElement
+
+    let songs = playlist_songs.songs
     shuffle_array(songs)
-    gen_songs_list(songs)
+
+    document.getElementsByClassName("playlist-songs")[0].remove()
+    const shuffled_songs = gen_songs_list(songs)
+    shuffled_songs.setAttribute("class", "playlist-songs")
+    playlist_parent.appendChild(shuffled_songs)
 }
 
 const create_song_card = (song) => {
     const song_div = document.createElement("div")
-    song_div.setAttribute("class", "playlist-modal-song")
+    song_div.setAttribute("class", "playlist-song")
 
     const song_img = document.createElement("img")
     song_img.setAttribute("src", song.song_art)
-    song_img.setAttribute("class", "playlist-modal-image")
+    song_img.setAttribute("class", "playlist-song-image")
     song_div.appendChild(song_img)
 
     const song_info = document.createElement("div")
-    song_info.setAttribute("class", "playlist-modal-song-info")
+    song_info.setAttribute("class", "playlist-song-info")
 
     const song_title = document.createElement("p")
-    song_title.setAttribute("class", "playlist-modal-song-title")
+    song_title.setAttribute("class", "playlist-song-title")
     song_title.innerText = song.song_name
     const song_artist = document.createElement("p")
-    song_artist.setAttribute("class", "playlist-modal-song-artist")
+    song_artist.setAttribute("class", "playlist-song-artist")
     song_artist.innerText = song.song_artist
     const song_album = document.createElement("p")
-    song_album.setAttribute("class", "playlist-modal-song-album")
+    song_album.setAttribute("class", "playlist-song-album")
     song_album.innerText = song.song_album
     song_info.appendChild(song_title)
     song_info.appendChild(song_artist)
@@ -67,29 +73,24 @@ const create_song_card = (song) => {
     song_div.appendChild(song_info)
 
     const song_duration = document.createElement("p")
-    song_duration.setAttribute("class", "playlist-modal-song-duration")
+    song_duration.setAttribute("class", "playlist-song-duration")
     song_duration.innerText = song.song_duration
     song_div.appendChild(song_duration)
 
     return song_div
 }
 
+// Produces playlist-songs element with song cards
 const gen_songs_list = (songs) => {
-    const modal_content = document.getElementById("playlist-modal-content")
-
-    document.getElementById("playlist-modal-songs").remove()
-
-    const song_list = document.createElement("div")
-    song_list.setAttribute("id", "playlist-modal-songs")
-
+    const playlist_songs = document.createElement("div")
     for(const song of songs) {
-        song_div = create_song_card(song)
-        song_list.appendChild(song_div)
+        const song_div = create_song_card(song)
+        playlist_songs.appendChild(song_div)
     }
 
-    modal_content.songs = songs
+    playlist_songs.songs = songs
 
-    modal_content.appendChild(song_list)
+    return playlist_songs
 }
 
 const get_included_songs = (playlist, songs) => {
