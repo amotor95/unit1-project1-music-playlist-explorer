@@ -13,6 +13,10 @@
     <header>
         <!-- Your header content here -->
         <h1>Music Playlist Explorer</h1>
+        <nav>
+            <a href="index.html" id="home-btn">Home</a>
+            <a href="featured.html" id="featured-btn">Featured</a>
+        </nav>
     </header>
 
     <main> 
@@ -29,6 +33,7 @@
                         <h1 id="playlist-modal-title">car</h1>
                         <p id="playlist-modal-creator">jackm</p>
                     </div>
+                    <btn id="shuffle-btn">🔀</btn>
                 </div>
                 <div id="playlist-modal-songs">
                     <!-- Populated by JS from data.json songs -->
@@ -42,6 +47,7 @@
         <p>by Jack McClure 2025</p>
     </footer>
     <script src="data/data.js"></script>
-    <script src="script.js"></script>
+    <script src="shared_scripts.js"></script>
+    <script src="index_script.js"></script>
 </body>
 </html>
