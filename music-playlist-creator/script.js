@@ -50,6 +50,8 @@ const populate_playlists = (playlists) => {
             card_img.setAttribute("src", playlist.playlist_art)
             card_img.setAttribute("alt", "playlist image")
             card_img.playlistID = playlist.playlistID
+            // Passes a reference to a function that takes the event as parameter and calls open_modal(e)
+            // If you did open_modal(e) it would call it when it when the following line runs instead of on click
             card_img.addEventListener("click", (e) => open_modal(e))
             new_card.appendChild(card_img)
 
@@ -71,12 +73,13 @@ const populate_playlists = (playlists) => {
             let likes_button = document.createElement("btn")
             likes_button.setAttribute("class", "playlist-like-button")
             likes_button.innerText = "♡"
+            likes_button.addEventListener("click", (e) => toggle_like(e))
             card_likes.appendChild(likes_button)
             let likes_count = document.createElement("p")
             likes_count.setAttribute("class", "playlist-num-likes")
             likes_count.innerText = playlist.num_likes
             likes_count.playlistID = playlist.playlistID
-            likes_count.addEventListener("click", (e) => open_modal(e))
+            likes_count.addEventListener("click", (e) => toggle_like(e))
             card_likes.appendChild(likes_count)
             new_card.appendChild(card_likes)
 
@@ -104,6 +107,7 @@ close_span.onclick = () => {
 
 // Closing modal by clicking shadow (the content counts as something else)
 // Target ensures you clicked on modal (shadow) not modal content etc.
+// Creates an event listener, can only have one event listern for each object
 modal.onclick = (e) => {
     if (e.target === modal) {
         modal.style.display = "none";
@@ -146,7 +150,7 @@ const create_modal = async (playlist) => {
     const modal_content = document.getElementById("playlist-modal-content")
 
     for(const song of songs) {
-        if (song.songID in playlist.song_list) {
+        if (playlist.song_list.includes(song.songID)) {
             const song_div = document.createElement("div")
             song_div.setAttribute("class", "playlist-modal-song")
 
@@ -188,6 +192,23 @@ const create_modal = async (playlist) => {
 };
 
 // END MODAL
+
+// START LIKING PLAYLISTS
+
+const toggle_like = (e) => {
+    // Works because the only other sibling is the like count node
+    like_count = e.target.nextSibling
+    console.log(like_count)
+    if (e.target.innerText === "♡") {
+        like_count.innerText = (parseInt(like_count.innerText) + 1)
+        e.target.innerText = "❤️"
+        e.target.paddingBottom = "0px"
+    } else {
+        like_count.innerText = (parseInt(like_count.innerText) - 1)
+        e.target.innerText = "♡"
+        e.target.paddingBottom = "5px"
+    }
+}
 
 const render_main_page = async () => {
     const data = await get_json_data()

@@ -14,7 +14,7 @@
             "playlist_author": "maanasp",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 8,
-            "song_list": [6, 5, 3, 4]
+            "song_list": [6, 5, 3, 4, 9, 10, 2, 7, 1, 8]
         },
         {
             "playlistID": 3,
@@ -31,6 +31,14 @@
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 7,
             "song_list": [5, 4, 3, 1]
+        },
+        {
+            "playlistID": 5,
+            "playlist_name": "reading",
+            "playlist_author": "melinam",
+            "playlist_art": "assets/img/playlist.png",
+            "num_likes": 76,
+            "song_list": [9, 2, 6, 10]
         }
     ],
     "songs": [
