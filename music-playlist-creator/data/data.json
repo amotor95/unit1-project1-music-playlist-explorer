@@ -5,7 +5,8 @@
             "playlist_name": "car",
             "playlist_author": "jackm",
             "playlist_art": "assets/img/playlist.png",
-            "num_likes": 5,
+            "num_likes": 7,
+            "liked": false,
             "song_list": [1, 2, 3, 4]
         },
         {
@@ -14,6 +15,7 @@
             "playlist_author": "maanasp",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 8,
+            "liked": false,
             "song_list": [6, 5, 3, 4, 9, 10, 2, 7, 1, 8]
         },
         {
@@ -22,6 +24,7 @@
             "playlist_author": "saitejv",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 3,
+            "liked": false,
             "song_list": [3, 2, 9, 7]
         },
         {
@@ -30,6 +33,7 @@
             "playlist_author": "justinl",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 7,
+            "liked": false,
             "song_list": [5, 4, 3, 1]
         },
         {
@@ -38,6 +42,7 @@
             "playlist_author": "melinam",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 76,
+            "liked": false,
             "song_list": [9, 2, 6, 10]
         },
         {
@@ -46,6 +51,7 @@
             "playlist_author": "luked",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 18,
+            "liked": false,
             "song_list": [6, 2, 5, 9, 7, 3, 4]
         },
         {
@@ -54,6 +60,7 @@
             "playlist_author": "maanasp",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 21,
+            "liked": false,
             "song_list": [10, 2, 3, 7, 9, 8]
         },
         {
@@ -62,6 +69,7 @@
             "playlist_author": "jackm",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 4,
+            "liked": false,
             "song_list": [3, 2, 9, 7]
         },
         {
@@ -70,6 +78,7 @@
             "playlist_author": "maanas",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 14,
+            "liked": false,
             "song_list": [5, 4, 3, 1]
         },
         {
@@ -78,6 +87,7 @@
             "playlist_author": "melinam",
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 28,
+            "liked": false,
             "song_list": [9, 2, 6, 10]
         }
     ],

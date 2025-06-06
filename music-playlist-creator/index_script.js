@@ -44,6 +44,7 @@ const modal_edit_playlist = () => {
         "playlist_author": playlist_author,
         "playlist_art": playlist_image,
         "num_likes": original_playlist.num_likes,
+        "liked": original_playlist.liked,
         "song_list": [...original_playlist.song_list, ...to_be_added_song_ids]
     }
     // Replace original playlist in the playlists object/data model
@@ -52,8 +53,6 @@ const modal_edit_playlist = () => {
             playlists[i] = new_playlist
         }
     }
-    // const new_playlist_card = create_playlist_card(new_playlist)
-    // edit_target.replaceWith(new_playlist_card)
     // Repopulates playlists including replaced one
     search()
     to_be_added_song_ids = []
@@ -68,6 +67,10 @@ const edit_playlist = (e) => {
     const playlist_card = e.target.parentElement
     edit_target = playlist_card
     create_add_playlist_modal()
+    const playlist = edit_target.playlist
+    document.getElementById("add-playlist-title-input").value = playlist.playlist_name
+    document.getElementById("add-playlist-creator-input").value = playlist.playlist_author
+    document.getElementById("add-playlist-image-input").value = playlist.playlist_art
     const header = document.getElementById("add-playlist-header")
     header.innerText = "Edit Playlist"
     const create_btn = document.getElementById("create-playlist-btn")
@@ -125,7 +128,14 @@ const create_playlist_card = (playlist) => {
     card_likes.setAttribute("class", "playlist-likes-div")
     const likes_button = document.createElement("btn")
     likes_button.setAttribute("class", "playlist-like-button")
-    likes_button.innerText = "♡"
+    if (playlist.liked) {
+        likes_button.innerText = "❤️"
+        likes_button.paddingBottom = "0px"
+    } else {
+        likes_button.innerText = "♡"
+        likes_button.paddingBottom = "5px"
+    }
+    // likes_button.innerText = "♡"
     likes_button.addEventListener("click", (e) => toggle_like(e))
     card_likes.appendChild(likes_button)
     const likes_count = document.createElement("p")
@@ -141,10 +151,8 @@ const create_playlist_card = (playlist) => {
 
 const populate_playlists = (playlists) => {
     const playlists_box = document.getElementById("playlist-cards-box")
-    // console.log(playlists)
     playlists_box.innerHTML = ""
     const playlists_to_populate = order_playlists(playlists)
-    // console.log(playlists_to_populate)
     if (playlists_to_populate.length > 0) {
         for (const playlist of playlists_to_populate) {
             const new_card = create_playlist_card(playlist)
@@ -307,12 +315,11 @@ const create_playlist = () => {
         "playlist_author": playlist_author,
         "playlist_art": playlist_image,
         "num_likes": 0,
+        "liked": false,
         "song_list": to_be_added_song_ids
     }
     max_playlist_id += 1
     const playlist_card = create_playlist_card(playlist)
-    // const playlist_box = document.getElementById("playlist-cards-box")
-    // playlist_box.appendChild(playlist_card)
     playlists.push(playlist)
     search()
     to_be_added_song_ids = []
@@ -331,17 +338,20 @@ add_playlist_close_btn.addEventListener("click", hide_modals)
 // START LIKING PLAYLISTS
 
 const toggle_like = (e) => {
-    // Works because the only other sibling is the like count node
-    like_count = e.target.nextSibling
-    if (e.target.innerText === "♡") {
-        like_count.innerText = (parseInt(like_count.innerText) + 1)
-        e.target.innerText = "❤️"
-        e.target.paddingBottom = "0px"
-    } else {
-        like_count.innerText = (parseInt(like_count.innerText) - 1)
-        e.target.innerText = "♡"
-        e.target.paddingBottom = "5px"
+    const playlist_card = e.target.parentElement.parentElement
+    let original_playlist = playlist_card.playlist
+    for (let i = 0; i < playlists.length; i++) {
+        if (playlists[i].playlistID === original_playlist.playlistID) {
+            if (!original_playlist.liked) {
+                playlists[i].num_likes += 1
+                playlists[i].liked = true
+            } else {
+                playlists[i].num_likes -= 1
+                playlists[i].liked = false
+            }
+        }
     }
+    search()
 }
 
 // END LIKING PLAYLISTS
@@ -414,7 +424,6 @@ const order_dropdown = document.getElementById("search-order-dropdown")
 
 const order_playlists = (playlists) => {
     let ordered_playlists = playlists
-    console.log(ordered_playlists)
     const sort_mode = order_dropdown.value
     if (sort_mode === "name") {
         ordered_playlists.sort((left, right) => {
@@ -435,7 +444,6 @@ const order_playlists = (playlists) => {
             else {return 0;}
         })
     }
-    console.log(ordered_playlists)
     return ordered_playlists
 }
 
