@@ -17,6 +17,19 @@
             <a href="index.html" id="home-btn">Home</a>
             <a href="featured.html" id="featured-btn">Featured</a>
         </nav>
+        <div id="tool-bar">
+            <p id="search-header">Search:</p>
+            <input id="search-text" type="text" value="">
+            <btn id="search-submit-btn">Submit Search</btn>
+            <btn id="search-clear-btn">Clear Search</btn>
+            <btn id="search-type-btn">Searching by title</btn>
+            <select name="filter" id="search-order-dropdown">
+                <option value="filler">-</option>
+                <option value="name">Alpabetically by name (A-Z)</option>
+                <option value="likes">Number of likes (desc)</option>
+                <option value="date">Date added (most recent to oldest)</option>
+            </select>
+        </div>
     </header>
 
     <main id="index-main"> 
@@ -42,14 +55,16 @@
                 <span id="add-playlist-modal-close" class="modal-close">×</span>
                 <div id="add-playlist-inputs">
                     <h1 id="add-playlist-header">Add A New Playlist</h1>
-
+                    
+                    <h2>Playlist Details</h2>
                     <p id="add-playlist-title-header">Title</p>
                     <input type="text" id="add-playlist-title-input" value="">
                     <p id="add-playlist-creator-header">Creator</p>
                     <input type="text" id="add-playlist-creator-input" value="">
                     <p id="add-playlist-image-header">Cover Image</p>
                     <input type="text" id="add-playlist-image-input" value="">
-
+                    
+                    <h2>Song Details</h2>
                     <p id="add-song-title-header">Song title</p>
                     <input type="text" id="add-song-title-input" value="">
                     <p id="add-song-author-header">Author</p>

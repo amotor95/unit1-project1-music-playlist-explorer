@@ -56,6 +56,25 @@ footer * {
     font-size: 25px;
 }
 
+#tool-bar {
+    display:flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    user-select: none;
+}
+
+#search-submit-btn, #search-clear-btn, #search-type-btn {
+    border: 3px blue solid;
+    background-color: white;
+    font-size: 15px;
+}
+
+#search-submit-btn:hover, #search-clear-btn:hover, #search-type-btn:hover {
+    font-size: 20px;
+    cursor: pointer;
+}
+
 #playlist-cards-box {
     display:flex;
     flex-direction: row;

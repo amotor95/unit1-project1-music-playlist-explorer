@@ -34,7 +34,6 @@ const modal_edit_playlist = () => {
     const playlist_title = document.getElementById("add-playlist-title-input").value
     const playlist_author = document.getElementById("add-playlist-creator-input").value
     const playlist_image = document.getElementById("add-playlist-image-input").value
-    console.log(edit_target.playlist)
     const original_playlist = edit_target.playlist
     const new_playlist = {
         "playlistID": original_playlist.playlistID,
@@ -81,7 +80,6 @@ const create_playlist_card = (playlist) => {
     const new_card = document.createElement("div")
     new_card.setAttribute("class", "playlist-card")
     new_card.playlist = playlist
-    // console.log(new_card.playlist)
 
     const delete_playlist_button = document.createElement("btn")
     delete_playlist_button.setAttribute("class", "delete-playlist-btn")
@@ -138,8 +136,12 @@ const create_playlist_card = (playlist) => {
 
 const populate_playlists = (playlists) => {
     const playlists_box = document.getElementById("playlist-cards-box")
-    if (playlists.length > 0) {
-        for (const playlist of playlists) {
+    // console.log(playlists)
+    playlists_box.innerHTML = ""
+    const playlists_to_populate = order_playlists(playlists)
+    // console.log(playlists_to_populate)
+    if (playlists_to_populate.length > 0) {
+        for (const playlist of playlists_to_populate) {
             const new_card = create_playlist_card(playlist)
 
             playlists_box.appendChild(new_card)
@@ -147,7 +149,7 @@ const populate_playlists = (playlists) => {
     } else {
         let no_playlists_message = document.createElement("div")
         no_playlists_message.setAttribute("class", "no-playlists")
-        no_playlists_message.innerText = "No playlists! Consider adding some!"
+        no_playlists_message.innerText = "No playlists found! Consider adding some!"
         playlists_box.appendChild(no_playlists_message)
     }
 };
@@ -279,7 +281,7 @@ const create_song = () => {
     const song_duration = document.getElementById("add-song-duration-input").value
 
     const song = {
-        "songID": songs.length+1,
+        "songID": songs[songs.length-1].songID+1,
         "song_name": song_title,
         "song_artist": song_author,
         "song_album": song_album,
@@ -298,7 +300,7 @@ const create_playlist = () => {
     const playlist_author = document.getElementById("add-playlist-creator-input").value
     const playlist_image = document.getElementById("add-playlist-image-input").value
     const playlist = {
-        "playlistID": playlists.length,
+        "playlistID": playlists[playlists.length-1].playlistID+1,
         "playlist_name": playlist_title,
         "playlist_author": playlist_author,
         "playlist_art": playlist_image,
@@ -327,7 +329,6 @@ add_playlist_close_btn.addEventListener("click", hide_modals)
 const toggle_like = (e) => {
     // Works because the only other sibling is the like count node
     like_count = e.target.nextSibling
-    // console.log(like_count)
     if (e.target.innerText === "♡") {
         like_count.innerText = (parseInt(like_count.innerText) + 1)
         e.target.innerText = "❤️"
@@ -341,12 +342,99 @@ const toggle_like = (e) => {
 
 // END LIKING PLAYLISTS
 
+// START SEARCH BAR
+
+const search_bar = document.getElementById("search-text")
+
+let search_mode = "name"
+
+const clear_search_btn = document.getElementById("search-clear-btn")
+const clear_search = () => {
+    search_bar.value = ""
+    query_playlists = playlists
+    populate_playlists(playlists)
+}
+clear_search_btn.addEventListener("click", clear_search)
+
+const toggle_search_btn = document.getElementById("search-type-btn")
+const toggle_search = () => {
+    if (search_mode === "name") {
+        toggle_search_btn.innerText = "Searching by author"
+        search_mode = "author"
+    } else {
+        toggle_search_btn.innerText = "Searching by name"
+        search_mode = "name"
+    }
+}
+toggle_search_btn.addEventListener("click", toggle_search)
+
+let query_playlists = []
+const search = () => {
+    query_playlists = []
+    const search_text = search_bar.value
+    if (search_mode === "name") {
+        for (const playlist of playlists) {
+            if (playlist.playlist_name.toLowerCase().includes(search_text.toLowerCase())) {
+                query_playlists.push(playlist)
+            }
+        }
+    } else {
+        for (const playlist of playlists) {
+            if (playlist.playlist_author.toLowerCase().includes(search_text.toLowerCase())) {
+                query_playlists.push(playlist)
+            }
+        }
+    }
+    populate_playlists(query_playlists)
+}
+
+const submit_search_btn = document.getElementById("search-submit-btn")
+submit_search_btn.addEventListener("click", search)
+
+
+// END SEARCH BARS
+
+// START PLAYLIST SORTING
+
+const order_dropdown = document.getElementById("search-order-dropdown")
+
+const order_playlists = (playlists) => {
+    let ordered_playlists = playlists
+    const sort_mode = order_dropdown.value
+    if (sort_mode === "name") {
+        ordered_playlists.sort((left, right) => {
+            if (left.playlist_name < right.playlist_name) {return -1;}
+            if (left.playlist_name > right.playlist_name) {return 1;}
+            else {return 0;}
+        })
+    } else if (sort_mode === "likes") {
+        ordered_playlists.sort((left, right) => {
+            if (left.num_likes > right.num_likes) {return -1;}
+            if (left.num_likes < right.num_likes) {return 1;}
+            else {return 0;}
+        })
+    } else if (sort_mode === "date") {
+        ordered_playlists.sort((left, right) => {
+            if (left.playlistID > right.playlistID) {return -1;}
+            if (left.playlistID < right.playlistID) {return 1;}
+            else {return 0;}
+        })
+    }
+    console.log(ordered_playlists)
+    return ordered_playlists
+}
+
+order_dropdown.addEventListener("change", () => populate_playlists(query_playlists))
+
+// END PLAYLIST SORTING
+
 let playlists = null
 let songs = null
 
 const render_main = async () => {
     const data = await get_json_data()
     playlists = data.playlists
+    query_playlists = playlists
     songs = data.songs
     populate_playlists(playlists)
 };
