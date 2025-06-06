@@ -94,13 +94,21 @@ const populate_playlists = (playlists) => {
 // START MODAL
 
 const modal = document.getElementById("playlist-modal")
+const playlist_modal = document.getElementById("playlist-modal-content")
+const add_playlist_modal = document.getElementById("add-playlist-modal-content")
+
+const hide_modals = () => {
+    modal.style.display = "none";
+    playlist_modal.style.display = "none";
+    add_playlist_modal.style.display = "none";
+}
 
 // Closing modal by clicking shadow (the content counts as something else)
 // Target ensures you clicked on modal (shadow) not modal content etc.
 // Creates an event listener, can only have one event listern for each object
 modal.onclick = (e) => {
     if (e.target === modal) {
-        modal.style.display = "none";
+        hide_modals()
     }
 };
 
@@ -130,7 +138,7 @@ const create_modal = async (playlist) => {
     console.log(songs)
 
     const close_btn = document.getElementById("playlist-modal-close")
-    close_btn.addEventListener("click", () => {modal.style.display = "none";})
+    close_btn.addEventListener("click", hide_modals)
 
     const shuffle_btn = document.getElementById("shuffle-btn")
     shuffle_btn.addEventListener("click", shuffle_songs)
@@ -144,118 +152,29 @@ const create_modal = async (playlist) => {
     const modal_creator = document.getElementById("playlist-modal-creator")
     modal_creator.innerText = playlist.playlist_author
 
-    // const modal_content = document.getElementById("playlist-modal-content")
-
     const songs_list = document.getElementsByClassName("playlist-songs")[0]
 
     const included_songs = get_included_songs(playlist, songs)
 
     const new_song_list = gen_songs_list(included_songs)
     new_song_list.setAttribute("class", "playlist-songs")
-    console.log(songs_list)
     songs_list.replaceWith(new_song_list)
 
-    // modal_content.remove()
-
-    // const new_modal_content = document.createElement("div")
-    // new_modal_content.setAttribute("id", "playlist-modal-content")
-    // new_modal_content.setAttribute("class", "modal-context")
-
-    // const close_btn = document.createElement("span")
-    // close_btn.setAttribute("id", "playlist-modal-close")
-    // close_btn.innerText = "×"
-    // close_btn.addEventListener("click", () => {modal.style.display = "none";})
-
-    // const playlist_modal_header = document.createElement("div")
-    // playlist_modal_header.setAttribute("id", "playlist-modal-header")
-
-    // const playlist_image = document.createElement("img")
-    // playlist_image.setAttribute("src", playlist.playlist_art)
-    // playlist_image.setAttribute("alt", "playlist image")
-    // playlist_image.setAttribute("class", "playlist-modal-image")
-    // playlist_modal_header.appendChild(playlist_image)
-
-    // const playlist_model_header_info = document.createElement("div")
-    // playlist_model_header_info.setAttribute("id", "playlist-modal-header-info")
-
-    // const playlist_modal_title = document.createElement("h1")
-    // playlist_modal_title.setAttribute("id", "playlist-modal-title")
-    // playlist_modal_title.innerText = playlist.playlist_name
-
-    // const playlist_modal_creator = document.createElement("p")
-    // playlist_modal_creator.setAttribute("id", "playlist-modal-creator")
-    // playlist_modal_creator.innerText = playlist.playlist_author
-
-    // playlist_model_header_info.appendChild(playlist_modal_title)
-    // playlist_model_header_info.appendChild(playlist_modal_creator)
-
-    // playlist_modal_header.appendChild(playlist_model_header_info)
-
-    // const modal_shuffle_btn = document.createElement("btn")
-    // modal_shuffle_btn.setAttribute("id", "shuffle-btn")
-    // modal_shuffle_btn.addEventListener("click", shuffle_songs)
-    // modal_shuffle_btn.innerText = "🔀"
-
-    // playlist_modal_header.appendChild(modal_shuffle_btn)
-
-    // new_modal_content.appendChild(close_btn)
-    // new_modal_content.appendChild(playlist_modal_header)
-
-
-    // const included_songs = get_included_songs(playlist, songs)
-
-    // document.getElementsByClassName("playlist-songs")[0].remove()
-    // const songs_list = gen_songs_list(included_songs)
-    // songs_list.setAttribute("class", "playlist-songs")
-    // new_modal_content.appendChild(songs_list)
-
-    // modal.appendChild(new_modal_content)
-
     modal.style.display = "block";
+    playlist_modal.style.display = "flex";
 };
 
 // END MODAL
 
 // START ADD PLAYLIST MODAL
 
-const add_playlist_btn = document.getElementById("add-playlist-btn")
-
 const create_add_playlist_modal = () => {
     modal.style.display = "block";
-
-    const modal_content = document.getElementById("playlist-modal-content")
-
-    modal_content.remove()
-
-    // Add new nodes to new_modal_content
-    const new_modal_content = document.createElement("div")
-    new_modal_content.setAttribute("id", "playlist-modal-content")
-    new_modal_content.setAttribute("class", "modal-context")
-
-    const close_btn = document.createElement("span")
-    close_btn.setAttribute("id", "playlist-modal-close")
-    close_btn.innerText = "×"
-    close_btn.addEventListener("click", () => {modal.style.display = "none";})
-
-    new_modal_content.appendChild(close_btn)
-
-    const new_playlist_content = document.createElement("div")
-    new_playlist_content.setAttribute("class", "add-playlist-content")
-
-    const new_playlist_info = document.createElement("div")
-    new_playlist_info.setAttribute("class", "new-playlist-info")
-
-    const new_title = document.createElement("h1")
-    new_title.setAttribute("class", "new-playlist-title")
-    new_title.innerText = "Add A New Playlist"
-
-
-
-    new_playlist_content.appendChild(new_playlist_info)
-    modal.appendChild(new_modal_content)
-
+    playlist_modal.style.display = "none";
+    add_playlist_modal.style.display = "flex"
 }
 
+const add_playlist_btn = document.getElementById("add-playlist-btn")
 add_playlist_btn.addEventListener("click", create_add_playlist_modal)
 
 // END ADD PLAYLIST MODAL
