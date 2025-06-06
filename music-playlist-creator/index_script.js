@@ -126,9 +126,11 @@ const create_playlist_card = (playlist) => {
     delete_playlist_button.addEventListener("click", (e) => delete_playlist(e))
     new_card.appendChild(delete_playlist_button)
 
-    const edit_playlist_button = document.createElement("btn")
+    // const edit_playlist_button = document.createElement("div")
+    const edit_playlist_button = document.createElement("img")
     edit_playlist_button.setAttribute("class", "edit-playlist-btn")
-    edit_playlist_button.innerText = "EDIT"
+    // edit_playlist_button.innerText = "edit"
+    edit_playlist_button.setAttribute("src", "assets/img/edit-btn.png")
     edit_playlist_button.addEventListener("click", (e) => edit_playlist(e))
     new_card.appendChild(edit_playlist_button)
 
