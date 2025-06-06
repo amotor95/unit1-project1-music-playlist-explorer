@@ -39,7 +39,7 @@ main {
 }
 
 footer {
-    height: 15vh;
+    height: 150px;
     background-color: #888;
     margin-bottom: 0;
     align-content: center;
@@ -240,7 +240,7 @@ footer * {
     display: flex;
     flex-direction: column;
     height: 90%;
-    max-height: 90%;
+    max-height: 75vh;
     border: solid 2px black;
     margin-top: min(15px, 5%);
     overflow: auto;
@@ -326,8 +326,10 @@ footer * {
     display: flex;
     margin-left: 35px;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     width: 50vw;
+    height: 70vh;
+    max-height: 55vh;
     overflow: auto;
 }
 
@@ -336,7 +338,7 @@ footer * {
     max-height: 30vh;
     margin: auto;
     margin-top: 60px;
-    margin-bottom: 125px;
+    margin-bottom: 2vh
 }
 
 .featured-title {

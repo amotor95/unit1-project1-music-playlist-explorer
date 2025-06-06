@@ -129,63 +129,87 @@ const create_modal = async (playlist) => {
     console.log(playlist)
     console.log(songs)
 
-    const modal_content = document.getElementById("playlist-modal-content")
-
-    modal_content.remove()
-
-    const new_modal_content = document.createElement("div")
-    new_modal_content.setAttribute("id", "playlist-modal-content")
-    new_modal_content.setAttribute("class", "modal-context")
-
-    const close_btn = document.createElement("span")
-    close_btn.setAttribute("id", "playlist-modal-close")
-    close_btn.innerText = "×"
+    const close_btn = document.getElementById("playlist-modal-close")
     close_btn.addEventListener("click", () => {modal.style.display = "none";})
 
-    const playlist_modal_header = document.createElement("div")
-    playlist_modal_header.setAttribute("id", "playlist-modal-header")
+    const shuffle_btn = document.getElementById("shuffle-btn")
+    shuffle_btn.addEventListener("click", shuffle_songs)
 
-    const playlist_image = document.createElement("img")
-    playlist_image.setAttribute("src", playlist.playlist_art)
-    playlist_image.setAttribute("alt", "playlist image")
-    playlist_image.setAttribute("class", "playlist-modal-image")
-    playlist_modal_header.appendChild(playlist_image)
+    const modal_image = document.getElementById("playlist-modal-image")
+    modal_image.setAttribute("src", playlist.playlist_art)
 
-    const playlist_model_header_info = document.createElement("div")
-    playlist_model_header_info.setAttribute("id", "playlist-modal-header-info")
+    const modal_title = document.getElementById("playlist-modal-title")
+    modal_title.innerText = playlist.playlist_name
 
-    const playlist_modal_title = document.createElement("h1")
-    playlist_modal_title.setAttribute("id", "playlist-modal-title")
-    playlist_modal_title.innerText = playlist.playlist_name
+    const modal_creator = document.getElementById("playlist-modal-creator")
+    modal_creator.innerText = playlist.playlist_author
 
-    const playlist_modal_creator = document.createElement("p")
-    playlist_modal_creator.setAttribute("id", "playlist-modal-creator")
-    playlist_modal_creator.innerText = playlist.playlist_author
+    // const modal_content = document.getElementById("playlist-modal-content")
 
-    playlist_model_header_info.appendChild(playlist_modal_title)
-    playlist_model_header_info.appendChild(playlist_modal_creator)
-
-    playlist_modal_header.appendChild(playlist_model_header_info)
-
-    const modal_shuffle_btn = document.createElement("btn")
-    modal_shuffle_btn.setAttribute("id", "shuffle-btn")
-    modal_shuffle_btn.addEventListener("click", shuffle_songs)
-    modal_shuffle_btn.innerText = "🔀"
-
-    playlist_modal_header.appendChild(modal_shuffle_btn)
-
-    new_modal_content.appendChild(close_btn)
-    new_modal_content.appendChild(playlist_modal_header)
-
+    const songs_list = document.getElementsByClassName("playlist-songs")[0]
 
     const included_songs = get_included_songs(playlist, songs)
 
-    // document.getElementsByClassName("playlist-songs")[0].remove()
-    const songs_list = gen_songs_list(included_songs)
-    songs_list.setAttribute("class", "playlist-songs")
-    new_modal_content.appendChild(songs_list)
+    const new_song_list = gen_songs_list(included_songs)
+    new_song_list.setAttribute("class", "playlist-songs")
+    console.log(songs_list)
+    songs_list.replaceWith(new_song_list)
 
-    modal.appendChild(new_modal_content)
+    // modal_content.remove()
+
+    // const new_modal_content = document.createElement("div")
+    // new_modal_content.setAttribute("id", "playlist-modal-content")
+    // new_modal_content.setAttribute("class", "modal-context")
+
+    // const close_btn = document.createElement("span")
+    // close_btn.setAttribute("id", "playlist-modal-close")
+    // close_btn.innerText = "×"
+    // close_btn.addEventListener("click", () => {modal.style.display = "none";})
+
+    // const playlist_modal_header = document.createElement("div")
+    // playlist_modal_header.setAttribute("id", "playlist-modal-header")
+
+    // const playlist_image = document.createElement("img")
+    // playlist_image.setAttribute("src", playlist.playlist_art)
+    // playlist_image.setAttribute("alt", "playlist image")
+    // playlist_image.setAttribute("class", "playlist-modal-image")
+    // playlist_modal_header.appendChild(playlist_image)
+
+    // const playlist_model_header_info = document.createElement("div")
+    // playlist_model_header_info.setAttribute("id", "playlist-modal-header-info")
+
+    // const playlist_modal_title = document.createElement("h1")
+    // playlist_modal_title.setAttribute("id", "playlist-modal-title")
+    // playlist_modal_title.innerText = playlist.playlist_name
+
+    // const playlist_modal_creator = document.createElement("p")
+    // playlist_modal_creator.setAttribute("id", "playlist-modal-creator")
+    // playlist_modal_creator.innerText = playlist.playlist_author
+
+    // playlist_model_header_info.appendChild(playlist_modal_title)
+    // playlist_model_header_info.appendChild(playlist_modal_creator)
+
+    // playlist_modal_header.appendChild(playlist_model_header_info)
+
+    // const modal_shuffle_btn = document.createElement("btn")
+    // modal_shuffle_btn.setAttribute("id", "shuffle-btn")
+    // modal_shuffle_btn.addEventListener("click", shuffle_songs)
+    // modal_shuffle_btn.innerText = "🔀"
+
+    // playlist_modal_header.appendChild(modal_shuffle_btn)
+
+    // new_modal_content.appendChild(close_btn)
+    // new_modal_content.appendChild(playlist_modal_header)
+
+
+    // const included_songs = get_included_songs(playlist, songs)
+
+    // document.getElementsByClassName("playlist-songs")[0].remove()
+    // const songs_list = gen_songs_list(included_songs)
+    // songs_list.setAttribute("class", "playlist-songs")
+    // new_modal_content.appendChild(songs_list)
+
+    // modal.appendChild(new_modal_content)
 
     modal.style.display = "block";
 };
