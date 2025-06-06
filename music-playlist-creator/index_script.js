@@ -58,11 +58,36 @@ const modal_edit_playlist = () => {
     to_be_added_song_ids = []
     edit_target = null
     hide_modals()   
-
 }
 
 // I take the add playlist and adapt it to work with edit 
 // (changing text and event listener to edit playlist function above instead of create playlist function)
+
+const delete_song_from_playlist = (song_card, remove_songID, playlistID) => {
+    song_card.remove()
+    for (let i = 0; i < playlists.length; i++) {
+        if (playlists[i].playlistID === playlistID) {
+            const new_song_list = playlists[i].song_list.filter((songID) => {
+                return songID !== remove_songID
+            })
+            playlists[i].song_list = new_song_list
+        }
+    }
+    to_be_added_song_ids = to_be_added_song_ids.filter((songID) => {return songID !== remove_songID})
+}
+
+
+
+const create_delete_song_card = (song, playlistID) => {
+    const song_card = create_song_card(song)
+    const delete_song_btn = document.createElement("btn")
+    delete_song_btn.addEventListener("click", (e) => delete_song_from_playlist(song_card, song.songID, playlistID))
+    delete_song_btn.setAttribute("class", "delete-song-btn")
+    delete_song_btn.innerText = "×"
+    song_card.appendChild(delete_song_btn)
+    return song_card
+}
+
 const edit_playlist = (e) => {
     const playlist_card = e.target.parentElement
     edit_target = playlist_card
@@ -78,6 +103,12 @@ const edit_playlist = (e) => {
     const new_create_btn = create_btn.cloneNode(true)
     new_create_btn.addEventListener("click", modal_edit_playlist)
     create_btn.replaceWith(new_create_btn)
+    const displayed_song_list = document.getElementById("to-be-added-songs")
+    const included_songs = get_included_songs(playlist, songs)
+    for (const song of included_songs) {
+        const song_card = create_delete_song_card(song, playlist.playlistID)
+        displayed_song_list.appendChild(song_card)
+    }
 }
 
 // END EDIT PLAYLISTS
@@ -297,12 +328,12 @@ const create_song = () => {
         "song_art": song_image,
         "song_duration": song_duration
     }
-    max_song_id += 1
-    const song_card = create_song_card(song)
+    const song_card = create_delete_song_card(song)
     const songs_list = document.getElementById("to-be-added-songs")
     songs.push(song)
-    to_be_added_song_ids.push(songs.length)
+    to_be_added_song_ids.push(max_song_id+1)
     songs_list.appendChild(song_card)
+    max_song_id += 1
 }
 
 const create_playlist = () => {
