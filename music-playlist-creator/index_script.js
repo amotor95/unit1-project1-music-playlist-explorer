@@ -15,6 +15,9 @@
 //     })
 // };
 
+let max_playlist_id = -1
+let max_song_id = -1
+
 // START DELETE PLAYLISTS
 
 const delete_playlist = (e) => {
@@ -49,8 +52,10 @@ const modal_edit_playlist = () => {
             playlists[i] = new_playlist
         }
     }
-    const new_playlist_card = create_playlist_card(new_playlist)
-    edit_target.replaceWith(new_playlist_card)
+    // const new_playlist_card = create_playlist_card(new_playlist)
+    // edit_target.replaceWith(new_playlist_card)
+    // Repopulates playlists including replaced one
+    search()
     to_be_added_song_ids = []
     edit_target = null
     hide_modals()   
@@ -264,10 +269,6 @@ const create_add_playlist_modal = () => {
     const create_song_btn = document.getElementById("add-song-btn")
 
     create_song_btn.addEventListener("click", create_song)
-    
-    // const create_playlist_btn = document.getElementById("create-playlist-btn")
-
-    // create_playlist_btn.addEventListener("click", create_playlist)
 
     to_be_added_song_ids = []
 
@@ -281,13 +282,14 @@ const create_song = () => {
     const song_duration = document.getElementById("add-song-duration-input").value
 
     const song = {
-        "songID": songs[songs.length-1].songID+1,
+        "songID": max_song_id+1,
         "song_name": song_title,
         "song_artist": song_author,
         "song_album": song_album,
         "song_art": song_image,
         "song_duration": song_duration
     }
+    max_song_id += 1
     const song_card = create_song_card(song)
     const songs_list = document.getElementById("to-be-added-songs")
     songs.push(song)
@@ -300,17 +302,19 @@ const create_playlist = () => {
     const playlist_author = document.getElementById("add-playlist-creator-input").value
     const playlist_image = document.getElementById("add-playlist-image-input").value
     const playlist = {
-        "playlistID": playlists[playlists.length-1].playlistID+1,
+        "playlistID": max_playlist_id+1,
         "playlist_name": playlist_title,
         "playlist_author": playlist_author,
         "playlist_art": playlist_image,
         "num_likes": 0,
         "song_list": to_be_added_song_ids
     }
+    max_playlist_id += 1
     const playlist_card = create_playlist_card(playlist)
-    const playlist_box = document.getElementById("playlist-cards-box")
-    playlist_box.appendChild(playlist_card)
+    // const playlist_box = document.getElementById("playlist-cards-box")
+    // playlist_box.appendChild(playlist_card)
     playlists.push(playlist)
+    search()
     to_be_added_song_ids = []
     hide_modals()
 }
@@ -372,6 +376,11 @@ let query_playlists = []
 const search = () => {
     query_playlists = []
     const search_text = search_bar.value
+    if (search_text === "") {
+        query_playlists = playlists
+        populate_playlists(query_playlists)
+        return
+    }
     if (search_mode === "name") {
         for (const playlist of playlists) {
             if (playlist.playlist_name.toLowerCase().includes(search_text.toLowerCase())) {
@@ -405,6 +414,7 @@ const order_dropdown = document.getElementById("search-order-dropdown")
 
 const order_playlists = (playlists) => {
     let ordered_playlists = playlists
+    console.log(ordered_playlists)
     const sort_mode = order_dropdown.value
     if (sort_mode === "name") {
         ordered_playlists.sort((left, right) => {
@@ -441,6 +451,8 @@ const render_main = async () => {
     playlists = data.playlists
     query_playlists = playlists
     songs = data.songs
+    max_playlist_id = playlists[playlists.length-1].playlistID
+    max_song_id = songs[songs.length-1].songID
     populate_playlists(playlists)
 };
 
