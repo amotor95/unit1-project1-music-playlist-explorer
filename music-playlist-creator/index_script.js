@@ -295,12 +295,12 @@ const create_add_playlist_modal = () => {
 
     document.getElementById("add-playlist-title-input").value = ""
     document.getElementById("add-playlist-creator-input").value = ""
-    document.getElementById("add-playlist-image-input").value = "assets/img/playlist.png"
+    document.getElementById("add-playlist-image-input").value = "https://picsum.photos/200?random=" + Math.floor(Math.random()*10000)
 
     document.getElementById("add-song-title-input").value = ""
     document.getElementById("add-song-author-input").value = ""
     document.getElementById("add-song-album-input").value = ""
-    document.getElementById("add-song-image-input").value = "assets/img/song.png"
+    document.getElementById("add-song-image-input").value = "https://picsum.photos/200?random=" + Math.floor(Math.random()*10000)
     document.getElementById("add-song-duration-input").value = ""
 
     document.getElementById("to-be-added-songs").innerHTML = ""
