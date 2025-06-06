@@ -39,6 +39,46 @@
             "playlist_art": "assets/img/playlist.png",
             "num_likes": 76,
             "song_list": [9, 2, 6, 10]
+        },
+        {
+            "playlistID": 6,
+            "playlist_name": "running",
+            "playlist_author": "luked",
+            "playlist_art": "assets/img/playlist.png",
+            "num_likes": 18,
+            "song_list": [6, 2, 5, 9, 7, 3, 4]
+        },
+        {
+            "playlistID": 7,
+            "playlist_name": "cardio",
+            "playlist_author": "maanasp",
+            "playlist_art": "assets/img/playlist.png",
+            "num_likes": 21,
+            "song_list": [10, 2, 3, 7, 9, 8]
+        },
+        {
+            "playlistID": 8,
+            "playlist_name": "coding",
+            "playlist_author": "jackm",
+            "playlist_art": "assets/img/playlist.png",
+            "num_likes": 4,
+            "song_list": [3, 2, 9, 7]
+        },
+        {
+            "playlistID": 9,
+            "playlist_name": "studying",
+            "playlist_author": "maanas",
+            "playlist_art": "assets/img/playlist.png",
+            "num_likes": 14,
+            "song_list": [5, 4, 3, 1]
+        },
+        {
+            "playlistID": 10,
+            "playlist_name": "knitting",
+            "playlist_author": "melinam",
+            "playlist_art": "assets/img/playlist.png",
+            "num_likes": 28,
+            "song_list": [9, 2, 6, 10]
         }
     ],
     "songs": [
