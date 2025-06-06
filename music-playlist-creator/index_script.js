@@ -391,6 +391,11 @@ const search = () => {
 const submit_search_btn = document.getElementById("search-submit-btn")
 submit_search_btn.addEventListener("click", search)
 
+search_bar.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        search()
+    }
+})
 
 // END SEARCH BARS
 
