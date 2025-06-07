@@ -57,11 +57,12 @@ nav *:hover {
 }
 
 main {
-    margin-top: 15px;
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
-    max-height: 65vh;
-    overflow-y: scroll;
+    max-height: calc(100vh - 250px - 100px - 15px);
+    background: grey;
+    overflow: auto;
 }
 
 footer {
@@ -136,6 +137,7 @@ footer * {
     height: 55vh;
     max-height: 55vh;
     border-radius: 8px;
+    justify-content: center;
 }
 
 .playlist-card {
@@ -285,7 +287,7 @@ footer * {
 }
 
 #playlist-modal-content {
-    background-color: #fefefe;
+    background-color: #888;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -303,7 +305,7 @@ footer * {
     flex-direction: row;
     height: 40%;
     position: relative;
-    border: solid 2px black;
+    border: solid 2px #71f423;
     overflow: auto;
 }
 
@@ -354,7 +356,7 @@ footer * {
     flex-direction: column;
     height: 90%;
     max-height: 75vh;
-    border: solid 2px black;
+    border: solid 2px #71f423;
     margin-top: min(15px, 5%);
     overflow: auto;
 }
@@ -366,7 +368,7 @@ footer * {
     flex-direction: row;
     width: 95%;
     align-self: center;
-    border: solid 2px black;
+    border: solid 2px #71f423;
     margin: 5px;
     height: 25vh;
     /* min-height: 25%; */
@@ -374,6 +376,7 @@ footer * {
     /* max-height: 25%; */
     height: 25%;
     min-height:25%;
+    border-radius: 8px;
 }
 
 .playlist-song-img {
@@ -407,6 +410,7 @@ footer * {
     right: 0;
     margin-right: 12px;
     user-select: none;
+    transition: .3s;
 }
 
 #shuffle-btn:hover {
@@ -470,7 +474,8 @@ footer * {
 }
 
 #add-playlist-btn {
-    margin-top: 25px;
+    /* margin-top: 0px; */
+    margin-bottom: 5px;
     align-self: center;
     border: 3px solid #71f423;
     color: #71f423;
