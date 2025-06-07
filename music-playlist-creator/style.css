@@ -159,7 +159,7 @@ footer * {
 }
 
 .playlist-image {
-    max-height: 55%;
+    height: 55%;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
@@ -313,6 +313,7 @@ footer * {
 #playlist-modal-image {
     height: 100%;
     object-fit: fill;
+    /* min-width: 20%; */
     /* max-width: 50%; */
 }
 
