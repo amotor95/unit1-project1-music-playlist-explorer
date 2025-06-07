@@ -49,7 +49,7 @@
             "playlistID": 6,
             "playlist_name": "running",
             "playlist_author": "luked",
-            "playlist_art": "https://picsum.photos/20?random=6",
+            "playlist_art": "https://picsum.photos/200?random=6",
             "num_likes": 18,
             "liked": false,
             "song_list": [6, 2, 5, 9, 7, 3, 4]
@@ -85,7 +85,7 @@
             "playlistID": 10,
             "playlist_name": "knitting",
             "playlist_author": "melinam",
-            "playlist_art": "https://picsum.photos/20?random=10",
+            "playlist_art": "https://picsum.photos/200?random=10",
             "num_likes": 28,
             "liked": false,
             "song_list": [9, 2, 6, 10]
@@ -94,7 +94,7 @@
             "playlistID": 11,
             "playlist_name": "test",
             "playlist_author": "tester",
-            "playlist_art": "https://picsum.photos/20?random=109",
+            "playlist_art": "https://picsum.photos/200?random=109",
             "num_likes": 0,
             "liked": false,
             "song_list": [10, 7, 6, 2, 9, 1, 4, 3]
@@ -114,7 +114,7 @@
             "song_name": "Bad Habits",
             "song_artist": "Ed Sheeran",
             "song_album": "Equals",
-            "song_art": "https://picsum.photos/20?random=12",
+            "song_art": "https://picsum.photos/200?random=12",
             "song_duration": "3:51"
         },
         {
