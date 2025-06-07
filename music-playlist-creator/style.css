@@ -484,7 +484,7 @@ footer * {
     user-select: none;
     width: 400px;
     height: 150px;
-    background-color: white;
+    background-color: #888;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -493,15 +493,15 @@ footer * {
 
 #add-playlist-btn:hover {
     cursor: pointer;
-    background-color: #888;
+    background-color: white;
     border-radius: 16px;
 }
 
 #add-playlist-modal-content {
-    background-color: #fefefe;
+    background-color: #888;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #71f423;
     width: 75vw;
     max-width: 100%;
     height: 60%;
@@ -546,7 +546,7 @@ footer * {
     font-size: 30px;
     user-select: none;
     width: 180px;
-    background-color: white;
+    background-color: #888;
     display: flex;
     justify-content: center;
     transition: 0.3s;
@@ -554,7 +554,7 @@ footer * {
 
 #add-song-btn:hover, #create-playlist-btn:hover {
     cursor: pointer;
-    background-color: #888;
+    background-color: white;
     border-radius: 8px;
 }
 
