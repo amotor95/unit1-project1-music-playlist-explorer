@@ -96,8 +96,8 @@ const edit_playlist = (e) => {
     document.getElementById("add-playlist-title-input").value = playlist.playlist_name
     document.getElementById("add-playlist-creator-input").value = playlist.playlist_author
     document.getElementById("add-playlist-image-input").value = playlist.playlist_art
-    const header = document.getElementById("add-playlist-header")
-    header.innerText = "Edit Playlist"
+    // const header = document.getElementById("add-playlist-header")
+    // header.innerText = "Edit Playlist"
     const create_btn = document.getElementById("create-playlist-btn")
     create_btn.innerText = "Edit Playlist"
     const new_create_btn = create_btn.cloneNode(true)
@@ -287,8 +287,8 @@ const create_add_playlist_modal = () => {
     playlist_modal.style.display = "none";
     add_playlist_modal.style.display = "flex"
 
-    const header = document.getElementById("add-playlist-header")
-    header.innerText = "Add Playlist"
+    // const header = document.getElementById("add-playlist-header")
+    // header.innerText = "Add Playlist"
     const create_btn = document.getElementById("create-playlist-btn")
     create_btn.innerText = "Add Playlist"
     const new_create_btn = create_btn.cloneNode(true)

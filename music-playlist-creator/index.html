@@ -54,29 +54,38 @@
             <div id="add-playlist-modal-content" class="modal-content">
                 <span id="add-playlist-modal-close" class="modal-close">×</span>
                 <div id="add-playlist-inputs">
-                    <h1 id="add-playlist-header">Add A New Playlist</h1>
-                    
-                    <h2>Playlist Details</h2>
-                    <p id="add-playlist-title-header">Title</p>
-                    <input type="text" id="add-playlist-title-input" value="">
-                    <p id="add-playlist-creator-header">Creator</p>
-                    <input type="text" id="add-playlist-creator-input" value="">
-                    <p id="add-playlist-image-header">Cover Image</p>
-                    <input type="text" id="add-playlist-image-input" value="">
-                    
-                    <h2>Song Details</h2>
-                    <p id="add-song-title-header">Song title</p>
-                    <input type="text" id="add-song-title-input" value="">
-                    <p id="add-song-author-header">Author</p>
-                    <input type="text" id="add-song-author-input" value="">
-                    <p id="add-song-album-header">Album</p>
-                    <input type="text" id="add-song-album-input" value="">
-                    <p id="add-song-image-header">Image</p>
-                    <input type="text" id="add-song-image-input" value="">
-                    <p id="add-song-duration-header">Duration</p>
-                    <input type="text" id="add-song-duration-input" value="">
-                    <btn id="add-song-btn">Create Song</btn>
-
+                    <!-- <h1 id="add-playlist-header">Add A New Playlist</h1> -->
+                    <div id="add-playlist-splitter">
+                        <div id="add-playlist-edit-playlist">
+                            <h2>Playlist Details</h2>
+                            <p id="add-playlist-title-header">Title</p>
+                            <input type="text" id="add-playlist-title-input" value="">
+                            <p id="add-playlist-creator-header">Creator</p>
+                            <input type="text" id="add-playlist-creator-input" value="">
+                            <p id="add-playlist-image-header">Cover Image</p>
+                            <input type="text" id="add-playlist-image-input" value="">
+                        </div>
+                        <div id="add-playlist-add-song">
+                            <h2>Song Details</h2>
+                            <div id="add-playlist-add-song-content">
+                                <div id="add-playlist-add-song-content-left">
+                                    <p id="add-song-title-header">Song title</p>
+                                    <input type="text" id="add-song-title-input" value="">
+                                    <p id="add-song-author-header">Author</p>
+                                    <input type="text" id="add-song-author-input" value="">
+                                    <p id="add-song-album-header">Album</p>
+                                    <input type="text" id="add-song-album-input" value="">
+                                </div>
+                                <div id="add-playlist-add-song-content-right">
+                                    <p id="add-song-image-header">Image</p>
+                                    <input type="text" id="add-song-image-input" value="">
+                                    <p id="add-song-duration-header">Duration</p>
+                                    <input type="text" id="add-song-duration-input" value="">
+                                    <btn id="add-song-btn">Add Song</btn>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="playlist-songs" id="to-be-added-songs"></div>
                 <btn id="create-playlist-btn">Create Playlist</btn>
